@@ -43,8 +43,8 @@ describe "UserPages" do
 		describe "with valid information" do
 
 			before do
-				fill_in "Name",         with: "Example User2"
-				fill_in "Email",        with: "user@example.com"
+				fill_in "Name",         with: "Example User"
+				fill_in "Email",        with: "example2@railstutorial.org"
 				fill_in "Password",     with: "foobar"
 				fill_in "Confirmation", with: "foobar"
 			end
@@ -57,10 +57,11 @@ describe "UserPages" do
 
 				before { click_button submit }
 
-				let(:user) { User.find_by_email("user@example.com") }
+				let(:user) { User.find_by_email("example2@railstutorial.org") }
 
 				it { should have_selector('title', text: user.name) }
 				it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+				it { should have_link('Sign out') }
 			end
 		end
 
